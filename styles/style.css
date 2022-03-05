@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
+body {
+  font-family: Rubik;
+  background-color: #ECECEC;
+  margin: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.gameBoard {
+  margin-top: 1rem;
+  height: 500px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[3];
+  -ms-grid-columns: (1fr)[3];
+      grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+  gap: 2px;
+  background-color: purple;
+}
+
+.gameBoard-cell {
+  background-color: #ECECEC;
+  color: purple;
+  font-size: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.look {
+  height: 50vh;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.look h1 {
+  text-align: center;
+}
+
+.look label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.look input {
+  padding: 10px;
+  font-size: 2rem;
+}
+
+.look button {
+  padding: 10px 0;
+  background-color: purple;
+  color: white;
+  font-family: inherit;
+  font-size: 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 50%;
+  margin: auto;
+  display: block;
+}
+
+.look.play {
+  display: none;
+}
+
+.look.win {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 20vh;
+}
+
+#reset {
+  padding: 10px 0;
+  background-color: purple;
+  color: white;
+  font-family: inherit;
+  font-size: 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.players {
+  height: 80px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr (1fr)[5] 3fr;
+      grid-template-columns: 3fr repeat(5, 1fr) 3fr;
+}
+
+.players .player1 {
+  background-color: #5463FF;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  padding-left: 20px;
+  font-size: 2rem;
+  border-radius: 0 30px 30px 0;
+}
+
+.players .player2 {
+  background-color: #FF1818;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  padding-right: 20px;
+  font-size: 2rem;
+  border-radius: 30px 0 0 30px;
+}
+
+.players .winplayer {
+  opacity: 0;
+  border-radius: 100%;
+}
+
+.players .winplayer.active {
+  opacity: 1;
+}
+
+.players .player1win1.active, .players .player1win2.active, .players .player1win3.active {
+  background-color: #5463FF;
+}
+
+.players .player2win1.active, .players .player2win2.active, .players .player2win3.active {
+  background-color: #FF1818;
+}
+
+@media (max-width: 700px) {
+  .players {
+    height: 160px;
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .players .player1 {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+  }
+  .players .player2 {
+    -ms-grid-column: 4;
+    -ms-grid-column-span: 2;
+    grid-column: 4/6;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+    text-align: right;
+  }
+  .players .player1, .players .player2 {
+    height: 100%;
+    font-size: 1.5rem;
+    padding: 0;
+  }
+  .players .winplayer {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    grid-row: 2/3;
+    width: 50px;
+    height: 50px;
+    -ms-grid-column-align: center;
+        justify-self: center;
+  }
+}
+/*# sourceMappingURL=style.css.map */

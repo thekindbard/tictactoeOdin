@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+@mixin buttonPurple() {
+          padding: 10px 0;
+          background-color: purple;
+          color: white;
+          font-family: inherit;
+          font-size: 2rem;
+          border-radius: 10px;
+          cursor: pointer;
+}
+$blue: #5463FF;
+$red: #FF1818;
+
+body {
+          font-family: Rubik;
+          background-color: #ECECEC;
+          margin: 0;
+}
+
+.container {
+          max-width: 800px;
+          margin: auto;
+}
+
+.gameBoard {
+          margin-top: 1rem;
+          height: 500px;
+          display: grid;
+          grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+          gap: 2px;
+          background-color: purple;
+          &-cell {
+                    background-color: #ECECEC;
+                    color: purple;
+                    font-size: 4rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    user-select: none;
+          }
+}
+.look {
+          height: 50vh;
+          width: 100%;
+          position: absolute;
+          background-color: rgba(white, 0.8);
+          top: 0;
+          bottom: 0;
+          left: 0;
+          margin: auto;
+          h1 {
+                    text-align: center;
+          }
+          label {
+                    display: flex;
+                    justify-content: space-around;
+                    font-size: 2rem;
+                    margin-bottom: 2rem;
+          }
+          input {
+                    padding: 10px;
+                    font-size: 2rem;
+          }
+          button {
+                    @include buttonPurple();
+                    width: 50%;
+                    margin: auto;
+                    display: block;
+          }
+          &.play {
+                    display: none;
+          }
+          &.win {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 20vh;
+          }
+}
+
+#reset {
+          @include buttonPurple();
+          display: block;
+          width: 50%;
+          margin: 0 auto;
+          margin-top: 20px;
+}
+
+.players {
+          height: 80px;
+          display: grid;
+          grid-template-columns: 3fr repeat(5, 1fr) 3fr;
+          .player1 {
+                    background-color: $blue;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: start;
+                    padding-left: 20px;
+                    font-size: 2rem;
+                    border-radius: 0 30px 30px 0;
+          }
+          .player2 {
+                    background-color: $red;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: end;
+                    padding-right: 20px;
+                    font-size: 2rem;
+                    border-radius: 30px 0 0 30px;
+          }
+          .winplayer {
+                    opacity: 0;
+                    border-radius: 100%;
+                    &.active {
+                              opacity: 1;
+                    }
+          }
+          .player1win1.active, .player1win2.active, .player1win3.active {
+                    background-color: $blue;
+          }
+          .player2win1.active, .player2win2.active, .player2win3.active {
+                    background-color: $red;
+          }
+
+}
+
+@media (max-width:700px) {
+          .players {
+                    height: 160px;
+                    grid-template-rows: 1fr 1fr;
+                    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                    align-items: center;
+                    .player1 {
+                              grid-column: 1/3;
+                    }
+                    .player2 {
+                              grid-column: 4/6;
+                              grid-row: 1/2;
+                              text-align: right;
+                    }
+                    .player1, .player2 {
+                              height: 100%;
+                              font-size: 1.5rem;
+                              padding: 0;
+                    }
+                    .winplayer {
+                              grid-row: 2/3;
+                              width: 50px;
+                              height: 50px;
+                              justify-self: center;
+                    }
+          }
+}
