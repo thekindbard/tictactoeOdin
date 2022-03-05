@@ -38,6 +38,13 @@ body {
                     align-items: center;
                     cursor: pointer;
                     user-select: none;
+                    span {
+                              opacity: 0;
+                              transition: opacity 200ms;
+                              &.active {
+                                        opacity: 1;
+                              }
+                    }
           }
 }
 .look {
@@ -114,6 +121,7 @@ body {
           .winplayer {
                     opacity: 0;
                     border-radius: 100%;
+                    transition: 500ms;
                     &.active {
                               opacity: 1;
                     }
@@ -144,7 +152,7 @@ body {
                     .player1, .player2 {
                               height: 100%;
                               font-size: 1.5rem;
-                              padding: 0;
+                              // padding: 0;
                     }
                     .winplayer {
                               grid-row: 2/3;

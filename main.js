@@ -13,7 +13,7 @@ const board = (() => {
           }
           const reset = () => {
                     board = ["-","-","-","-","-","-","-","-","-"];
-                    document.querySelectorAll('.gameBoard-cell').forEach( cell => cell.innerText= "");
+                    document.querySelectorAll('.gameBoard-cell span').forEach( cell => {cell.innerText= ""; cell.classList.remove("active")});
           }
           const checkWinner = (player) => {
                     let winner =  false;
@@ -92,8 +92,7 @@ const gameController = ({player1, player2}, board) => {
                     document.querySelector(".look").classList.remove("win");
                     resetButton.addEventListener("click", controller.reset);
                     resetButton.removeEventListener("click", controller.resetAll);
-
-
+                    resetButton.innerText = "Reset";
           }
           const check = (e) => {
                     const n = e.target.getAttribute('index');
@@ -103,7 +102,8 @@ const gameController = ({player1, player2}, board) => {
                     } else {
                               lastPlayer = player1;
                     }
-                    e.target.innerText = lastPlayer.symb;
+                    e.target.childNodes[0].innerText = lastPlayer.symb;
+                    e.target.childNodes[0].classList.add("active");
                     if (board.movePiece({n, player:lastPlayer})) {
                               winnerPlayer = lastPlayer;
                               lastPlayer.setWin();
@@ -125,6 +125,7 @@ const gameController = ({player1, player2}, board) => {
                     target.classList.add('win');
                     resetButton.removeEventListener("click", controller.reset);
                     resetButton.addEventListener("click", controller.resetAll);
+                    resetButton.innerText = "Replay";
 
           }
           return {check, reset, resetAll}
@@ -148,8 +149,8 @@ const look = (() => {
                     }
           const init = () => {
                     target.innerHTML = `<h1>Set the players!!</h1>
-                    <label>Player n1: <input type="text" value="pedro"></label>
-                    <label>Player n2: <input type="text" value="alejandro"></label>
+                    <label>Player n1: <input type="text" value="Pedro"></label>
+                    <label>Player n2: <input type="text" value="Pablo"></label>
                     <button type="button">PLAY!!</button>`;
                     target.querySelector('button').addEventListener("click",play);
           }
@@ -164,7 +165,11 @@ const newBoard = ((selector =".gameBoard") => {
                     const div = document.createElement("div");
                     div.className = "gameBoard-cell";
                     div.setAttribute("index", i);
+                    const span = document.createElement("SPAN");
+                    div.appendChild(span);
                     target.appendChild(div);
+
+
           }
 })();
 
